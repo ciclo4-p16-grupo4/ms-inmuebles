@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +13,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_ns2=e7-k7ul67%7t1nl)hs=@oc$(wm3+p54*39$goha)7tg@&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+## Obtener la variable de entorno PYTHON_ENV
+## Si no existe el valor por defecto es dev
+PYTHON_ENV = os.environ.get('PYTHON_ENV', 'dev') 
+DEBUG = PYTHON_ENV == 'dev' # si es diferente de dev el debug sera igual a false
+
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -120,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
