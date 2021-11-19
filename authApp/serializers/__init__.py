@@ -1,0 +1,1 @@
+from authApp.serializers.inmuebleSerializer import InmueblesSerializer
