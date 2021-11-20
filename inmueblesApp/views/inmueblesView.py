@@ -1,10 +1,7 @@
-from django.conf import settings
 from django.db.models.query import QuerySet
 from rest_framework import generics, status, views
 from rest_framework.response import Response
-from rest_framework.permissions import SAFE_METHODS, IsAdminUser, IsAuthenticated
 from rest_framework.serializers import Serializer
-from rest_framework_simplejwt.backends import TokenBackend
 from inmueblesApp.models.inmuebles import Inmuebles
 from inmueblesApp.serializers.inmueblesSerializer import InmueblesSerializer
 
