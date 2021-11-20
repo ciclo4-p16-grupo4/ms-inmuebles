@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-_ns2=e7-k7ul67%7t1nl)hs=@oc$(wm3+p54*39$goha)7tg@&
 PYTHON_ENV = os.environ.get('PYTHON_ENV', 'dev') 
 DEBUG = PYTHON_ENV == 'dev' # si es diferente de dev el debug sera igual a false
 
-ALLOWED_HOSTS = ['herokuapp.com']
+ALLOWED_HOSTS = ['grupo4-inmueblesms.herokuapp.com']
 
 # Application definition
 
