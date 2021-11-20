@@ -1,2 +1,2 @@
 from .inmuebles import Inmuebles
-from .user import User
+from .imagenesInmueble import ImagenInmuebles

@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +13,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_ns2=e7-k7ul67%7t1nl)hs=@oc$(wm3+p54*39$goha)7tg@&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+## Obtener la variable de entorno PYTHON_ENV
+## Si no existe el valor por defecto es dev
+PYTHON_ENV = os.environ.get('PYTHON_ENV', 'dev') 
+DEBUG = PYTHON_ENV == 'dev' # si es diferente de dev el debug sera igual a false
+
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -26,17 +32,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'inmueblesApp'
 ]
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME'   : timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME'  : timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS'   : False,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN'       : False,
-    'ALGORITHM'               : 'HS256',
-    'USER_ID_FIELD'           : 'id',
-    'USER_ID_CLAIM'           : 'user_id',
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,12 +47,9 @@ REST_FRAMEWORK = {
 	'DEFAULT_PERMISSION_CLASSES': (
 		'rest_framework.permissions.AllowAny',
 	),
-	'DEFAULT_AUTHENTICATION_CLASSES': (
-		'rest_framework_simplejwt.authentication.JWTAuthentication',
-	)
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
-AUTH_USER_MODEL = 'inmueblesApp.User'
 
 ROOT_URLCONF = 'inmuebles.urls'
 
@@ -85,13 +77,14 @@ WSGI_APPLICATION = 'inmuebles.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
-        'NAME'     : 'd8v86sd0s5lp92',
-        'USER'     : 'ldmnjsqxkjload',
-        'PASSWORD' : '00d6b26d9c8adddcf529469b9a6aee977bd4273f9ea50d3ee55285d18447e0f9',
-        'HOST'     : 'ec2-3-208-157-78.compute-1.amazonaws.com',
-        'PORT'     : '5432',
-    }   
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8v86sd0s5lp92',
+        'USER': 'ldmnjsqxkjload',
+        'PASSWORD': '00d6b26d9c8adddcf529469b9a6aee977bd4273f9ea50d3ee55285d18447e0f9',
+        'HOST': 'ec2-3-208-157-78.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'TEST':{ 'MIRROR': 'default'},
+    }
 }
 
 
@@ -120,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
