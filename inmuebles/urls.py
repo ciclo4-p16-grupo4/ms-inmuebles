@@ -8,6 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('inmuebles/<int:pk>/', inmueblesAppViews.InmueblesDetailView.as_view()), #shows Inmuebles details
     path('inmuebles/create/', inmueblesAppViews.InmueblesCreateView.as_view()), #add a product to the db
-    path('inmuebles/update/<int:pk>/', inmueblesAppViews.InmueblesUpdateView.as_view()), #updates a product from the database
-    path('inmuebles/delete/<int:pk>/', inmueblesAppViews.InmueblesDeleteView.as_view()), #delete a product from the database
+    path('inmuebles/update/<int:id>/', inmueblesAppViews.InmueblesUpdateView.as_view()), #updates a product from the database
+    path('inmuebles/delete/<int:id>/', inmueblesAppViews.InmueblesDeleteView.as_view()), #delete a product from the database
 ]

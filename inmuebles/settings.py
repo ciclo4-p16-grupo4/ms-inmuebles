@@ -33,17 +33,6 @@ INSTALLED_APPS = [
     'inmueblesApp'
 ]
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME'   : timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME'  : timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS'   : False,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN'       : False,
-    'ALGORITHM'               : 'HS256',
-    'USER_ID_FIELD'           : 'id',
-    'USER_ID_CLAIM'           : 'user_id',
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,12 +47,9 @@ REST_FRAMEWORK = {
 	'DEFAULT_PERMISSION_CLASSES': (
 		'rest_framework.permissions.AllowAny',
 	),
-	'DEFAULT_AUTHENTICATION_CLASSES': (
-		'rest_framework_simplejwt.authentication.JWTAuthentication',
-	)
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
-AUTH_USER_MODEL = 'inmueblesApp.User'
 
 ROOT_URLCONF = 'inmuebles.urls'
 
@@ -91,13 +77,14 @@ WSGI_APPLICATION = 'inmuebles.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
-        'NAME'     : 'd8v86sd0s5lp92',
-        'USER'     : 'ldmnjsqxkjload',
-        'PASSWORD' : '00d6b26d9c8adddcf529469b9a6aee977bd4273f9ea50d3ee55285d18447e0f9',
-        'HOST'     : 'ec2-3-208-157-78.compute-1.amazonaws.com',
-        'PORT'     : '5432',
-    }   
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8v86sd0s5lp92',
+        'USER': 'ldmnjsqxkjload',
+        'PASSWORD': '00d6b26d9c8adddcf529469b9a6aee977bd4273f9ea50d3ee55285d18447e0f9',
+        'HOST': 'ec2-3-208-157-78.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'TEST':{ 'MIRROR': 'default'},
+    }
 }
 
 
