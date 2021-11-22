@@ -6,7 +6,7 @@ class InmueblesSerializer(serializers.ModelSerializer):
 	imagenes = ImagenInmuebleSerializer(many=True, required=False)
 	class Meta():
 		model = Inmuebles
-		fields = ['id','titulo', 'direccion','ciudad', 'poblacion','tipo','precio','area','habitaciones','banos','estrato','contrato','descripcion', 'imagenes']
+		fields = ['id','titulo', 'direccion','ciudad', 'poblacion','tipo','precio','area','habitaciones','banos','estrato','contrato','descripcion', 'coordenadas', 'imagenes']
 			
 	def create(self, validated_data):
 		if 'imagenes' in validated_data.keys():

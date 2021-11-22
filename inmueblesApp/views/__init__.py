@@ -1,1 +1,1 @@
-from .inmueblesView import (InmueblesCreateView, InmueblesDeleteView, InmueblesUpdateView, InmueblesDetailView)
+from .inmueblesView import (InmueblesCreateView, InmueblesDeleteView, InmueblesUpdateView, InmueblesDetailView, ImnueblesAllView, ImnuebleSearch)
