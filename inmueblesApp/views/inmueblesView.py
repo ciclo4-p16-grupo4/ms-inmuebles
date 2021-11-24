@@ -90,7 +90,9 @@ class InmueblesDeleteView(generics.DestroyAPIView):
 class InmueblesUpdateView(views.APIView):
     def put(self, request, id):
         updateInmuebleInstance = Inmuebles.objects.get(id=id)
-        updateInmuebleSerializer = InmueblesSerializer(updateInmuebleInstance, data=request.data)
+        # print(updateInmuebleInstance.objects)
+        # return 0
+        updateInmuebleSerializer = InmueblesSerializer(updateInmuebleInstance, data = updateInmuebleInstance.__dict__)
         updateInmuebleSerializer.is_valid(raise_exception=True)
-        updateInmuebleSerializer.save()
+        updateInmuebleSerializer.save(newData=request.data)
         return Response({"detail": "succes", "data": updateInmuebleSerializer.data}, status=status.HTTP_200_OK)

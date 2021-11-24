@@ -35,3 +35,4 @@ class Inmuebles(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
     coordenadas = models.CharField(max_length=100)
+    likes = models.IntegerField(default=0)
