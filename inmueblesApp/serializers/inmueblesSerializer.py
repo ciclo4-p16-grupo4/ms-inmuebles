@@ -6,7 +6,7 @@ class InmueblesSerializer(serializers.ModelSerializer):
 	imagenes = ImagenInmuebleSerializer(many=True, required=False)
 	class Meta():
 		model = Inmuebles
-		fields = ['id','titulo', 'direccion','ciudad', 'poblacion','tipo','precio','area','habitaciones','banos','estrato','contrato','descripcion', 'coordenadas', 'likes', 'imagenes']
+		fields = ['id','titulo', 'direccion','ciudad', 'poblacion','tipo','precio','area','habitaciones','banos','estrato','contrato','descripcion', 'coordenadas', 'likes', 'imagenes', 'source_mapas']
 			
 	def create(self, validated_data):
 		if 'imagenes' in validated_data.keys():
@@ -46,6 +46,7 @@ class InmueblesSerializer(serializers.ModelSerializer):
 		instance.contrato = validated_data['newData'].get('contrato', instance.contrato)
 		instance.descripcion = validated_data['newData'].get('descripcion', instance.descripcion)
 		instance.coordenadas = validated_data['newData'].get('coordenadas', instance.coordenadas)
+		instance.source_mapas = validated_data['newData'].get('source_mapas', instance.source_mapas)
 		instance.likes = validated_data['newData'].get('likes', instance.likes)
 		instance.save()
 

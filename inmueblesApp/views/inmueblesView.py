@@ -85,7 +85,7 @@ class InmueblesDeleteView(generics.DestroyAPIView):
         deleted = Inmuebles.objects.filter(id=id).delete()
         if(not deleted[1]):
             return Response({"detail": "inmueble with id "+str(id)+" Not Found"}, status=status.HTTP_404_NOT_FOUND)
-        return Response({"detail": "deleted", "data": deleted[1]}, status=status.HTTP_200_OK)
+        return Response({"detail": "inmmueble eliminado con exito!!", "data": deleted[1]}, status=status.HTTP_200_OK)
 
 class InmueblesUpdateView(views.APIView):
     def put(self, request, id):
@@ -95,4 +95,4 @@ class InmueblesUpdateView(views.APIView):
         updateInmuebleSerializer = InmueblesSerializer(updateInmuebleInstance, data = updateInmuebleInstance.__dict__)
         updateInmuebleSerializer.is_valid(raise_exception=True)
         updateInmuebleSerializer.save(newData=request.data)
-        return Response({"detail": "succes", "data": updateInmuebleSerializer.data}, status=status.HTTP_200_OK)
+        return Response({"detail": "inmmueble actualizado con exito!!", "data": updateInmuebleSerializer.data}, status=status.HTTP_200_OK)
